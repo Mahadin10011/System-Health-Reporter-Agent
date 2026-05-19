@@ -1,7 +1,7 @@
 from collector import collect_metrics
 from analyser import analyse, load_config
 from narrator import narrate
-from reporter import write_report, notify_if_critical
+from reporter import write_report, show_windows_popup
 
 print("Collecting metrics...")
 metrics = collect_metrics()
@@ -15,5 +15,5 @@ narrative = narrate(metrics, flags)
 print("Writing report...")
 path = write_report(narrative, metrics, flags)
 
-notify_if_critical(flags)
+show_windows_popup(flags, metrics, narrative)
 print(f"Done. Report saved to {path}")
